@@ -1,0 +1,14 @@
+const express = require('express');
+const path = require('path');
+const port = 3000
+
+const app = express();
+
+app.use("/static", express.static(path.resolve(__dirname, "app", "static")))
+app.get('/*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "app", "index.html"));
+});
+
+app.listen(port, () => {
+    console.log(`app listening on port ${port}`)
+})
